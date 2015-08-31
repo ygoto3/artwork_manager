@@ -1,0 +1,15 @@
+h1 作品一覧
+
+ul
+  - @artworks.each do |artwork|
+    li
+      = artwork.title
+      = image_tag artwork.image.thumb.url
+      ul
+        li
+          = link_to "編集", edit_artwork_path(artwork.id)
+        li
+          = link_to "削除", artwork_path(artwork.id), method: :delete, data: { confirm: "本当に削除しますか？" }
+
+p
+  = link_to "作品追加", new_artwork_path

@@ -1,0 +1,22 @@
+= form_for @artwork, :html => {:multipart => true} do |f|
+  p
+    = f.label :title
+    br
+    = f.text_field :title
+    br
+    - if @artwork.errors.any?
+      = @artwork.errors.messages[:title][0]
+
+  p
+    = f.label :price
+    br
+    = f.text_field :price
+
+  p
+    = f.label :image
+    br
+    = f.file_field :image
+    = image_tag @artwork.image.thumb.url
+
+  p
+    = f.submit
